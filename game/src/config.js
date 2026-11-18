@@ -1,61 +1,25 @@
-// Every tuning number and colour in one place. The playfield is a fixed 1280x720 logical area;
-// the renderer scales it to the window, so no rule below depends on the screen size.
-
-export const FIELD = { width: 1280, height: 720, groundY: 664 };
-
-/** The simulation's fixed step, in seconds: 60 updates a second whatever the display's rate. */
-export const STEP = 1 / 60;
-
-export const PLAYER = {
-  width: 72,
-  height: 24,
-  speed: 560,
-  invulnerable: 1.5,
-};
-
-export const LIVES = 3;
-
-export const BLOCK = {
-  minWidth: 40,
-  maxWidth: 110,
-  height: 36,
-  speed: 240,
-  speedPerLevel: 30,
-  speedJitter: 90,
-  interval: 0.55,
-  intervalScale: 0.88,
-  minInterval: 0.14,
-  dodgePoints: 1,
-};
-
-export const COIN = {
-  size: 24,
-  speed: 190,
-  speedPerLevel: 14,
-  interval: 1.4,
-  intervalJitter: 0.8,
-  points: 10,
-};
-
-/** Seconds of play per level, and the last level: speeds and spawn rates stop growing there. */
-export const LEVEL = { seconds: 12, max: 12 };
-
-/** How many falling things can exist at once; the pool is allocated once, at boot. */
-export const POOL_SIZE = 64;
-
+// Harborline tuning constants — world size, speeds, colours and economy.
+export const WORLD_W = 3200;
+export const WORLD_H = 2600;
+export const BLOCK = 400;
+export const ROAD_W = 96;
+export const WATER_Y = 2080;
+export const PLAYER = { walkSpeed: 155, runSpeed: 265, radius: 13, maxHealth: 100 };
+export const CAR = { accel: 540, brake: 760, maxSpeed: 440, reverse: 160, turnRate: 2.7 };
+export const WANTED = { maxStars: 5, coolTime: 12 };
 export const PALETTE = {
-  backdrop: '#11141b',
-  sky: '#1b1f2a',
-  ground: '#2a3040',
-  player: '#4fc3f7',
-  block: '#e5534b',
-  coin: '#f2c94c',
-  panel: '#252b38',
-  text: '#eef1f5',
-  muted: '#8b93a3',
+  grass: '#79c24f', sand: '#eed88f', pavement: '#cfc8b8', road: '#383d45',
+  roadLine: '#f7e26b', water: '#1e82ad', waterDeep: '#125e82', pier: '#9a6b45',
+  roofs: ['#e86a5e','#f2a65a','#5eb1c9','#8d7fd6','#e8c85e','#67b98a','#d97fb8','#f27d4d','#4fc3a1','#e0e6ee'],
 };
-
+export const DISTRICTS = [
+  { name: 'Old Market', x: 0, y: 0, w: 1100, h: 950 },
+  { name: 'Palm Heights', x: 1100, y: 0, w: 1050, h: 950 },
+  { name: 'North Yards', x: 2150, y: 0, w: 1050, h: 950 },
+  { name: 'Marina Row', x: 0, y: 950, w: 1100, h: 700 },
+  { name: 'City Centre', x: 1100, y: 950, w: 1050, h: 700 },
+  { name: 'Dockside', x: 2150, y: 950, w: 1050, h: 700 },
+  { name: 'The Harbour', x: 0, y: 1650, w: 3200, h: 950 },
+];
+export const SAVE_KEY = 'harborline-save-v1';
 export const FONT = 'system-ui, -apple-system, "Segoe UI", sans-serif';
-
-/** Where the best score is kept between visits (this browser only). */
-export const BEST_KEY = 'block-dodger.best';
